@@ -1,0 +1,1 @@
+// login.reducer.js can export the auth_state，after combine with the single state.
