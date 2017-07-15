@@ -3032,7 +3032,7 @@ qs@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-4.0.0.tgz#c31d9b74ec27df75e543a86c78728ed8d4623607"
 
-qs@~6.4.0:
+qs@^6.3.0, qs@~6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.4.0.tgz#13e26d28ad6b0ffaa91312cd3bf708ed351e7233"
 
@@ -3095,6 +3095,12 @@ react-native-i18n@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-2.0.2.tgz#4793f7b86bd86ad8c8f95792ba51a3464f95bc1b"
   dependencies:
     i18n-js "github:fnando/i18n-js#v3.0.0"
+
+react-native-rest-client@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-rest-client/-/react-native-rest-client-0.1.1.tgz#eaa41b8e18ff6f70d90695c0dd01d030713a28b1"
+  dependencies:
+    qs "^6.3.0"
 
 react-native-tab-view@^0.0.65:
   version "0.0.65"
