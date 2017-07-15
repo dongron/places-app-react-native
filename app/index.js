@@ -8,7 +8,7 @@ import {
     Provider,
     connect } from 'react-redux';
 
-// import configureStore from './store/configureStore';
+import configureStore from './store/configureStore';
 
 //import containers
 
@@ -23,6 +23,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 // import deviceInitialState from './reducers/device/deviceInitialState';
 // import globalInitialState from './reducers/global/globalInitialState';
 // import profileInitialState from './reducers/profile/profileInitialState';
+
+const reduxStore = configureStore();
 
 export default class App extends Component {
     render() {
