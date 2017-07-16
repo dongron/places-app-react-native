@@ -16,6 +16,10 @@ export default class Favorite extends Component {
         super(props);
     }
 
+    static navigationOptions = {
+        title: 'Favorites',
+    };
+
     render() {
         return(
             <View>

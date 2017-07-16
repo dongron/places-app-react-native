@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Navigator,
     StyleSheet,
     View,
-    Text } from 'react-native';
+    Text
+} from 'react-native';
 import {
     Provider,
-    connect } from 'react-redux';
+    connect
+} from 'react-redux';
 
 import configureStore from './store/configureStore';
 
@@ -26,17 +28,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 // import profileInitialState from './reducers/profile/profileInitialState';
 
 
-
 import Favorite from './containers/Favorite';
+import FavoriteStackNavigator from './navigators/StackNavigators/FavoriteStackNavigator'
 
 const store = configureStore();
 
 export default class App extends Component {
     render() {
         return (
-       <Provider store={store}>
-           <Favorite/>
-       </Provider>
+            <Provider store={store}>
+                <FavoriteStackNavigator/>
+            </Provider>
 
             // <AppWithNavigationState />
             // <View style={styles.container}>
