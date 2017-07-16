@@ -29,7 +29,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 import Favorite from './containers/Favorite';
-import FavoriteStackNavigator from './navigators/StackNavigators/FavoriteStackNavigator'
+import FavoriteStackNavigator from './navigators/StackNavigators/FavoriteStackNavigator/FavoriteStackNavigator'
 
 const store = configureStore();
 
