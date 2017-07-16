@@ -2,7 +2,8 @@ import {combineReducers} from 'redux';
 
 // import people from './people';
 // import locations from './locations';
-import places from '../containers/Login/reducer';
+import { items, itemsHasErrored, itemsIsLoading } from '../containers/Favorite/reducer';
+// import navigators from '../navigators/TabNavigator/reducer';
 
 // const places = [
 //     {id: 1, name: "cafe skrzynka"},
@@ -12,9 +13,9 @@ import places from '../containers/Login/reducer';
 export default combineReducers({
     // people,
     // locations,
-    places
+    items, itemsHasErrored, itemsIsLoading
 });
 
-export const getPlaces = ({places}) => places;
+// export const getPlaces = ({places}) => places;
 // export const getPeople = ({people}) => people;
 // export const getLocations = ({locations}) => locations;

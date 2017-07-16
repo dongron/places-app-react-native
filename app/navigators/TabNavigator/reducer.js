@@ -13,3 +13,5 @@ export default (state = DEFAULT_STATE, {type, payload} = {}) => {
         //     return {searchedLocation: {}};
         default:
             return state;
+    }
+}

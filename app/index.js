@@ -13,6 +13,7 @@ import configureStore from './store/configureStore';
 //import containers
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+// import TabNavigator from './navigators/TabNavigator/TabNavigator';
 
 //actions to dipatch bootstrap values
 // import {setPlatform, setVersion} from './reducers/device/deviceActions';
@@ -24,23 +25,32 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 // import globalInitialState from './reducers/global/globalInitialState';
 // import profileInitialState from './reducers/profile/profileInitialState';
 
-const reduxStore = configureStore();
+
+
+import Favorite from './containers/Favorite';
+
+const store = configureStore();
 
 export default class App extends Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native!
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit index.ios.js
-                </Text>
-                <Text style={styles.instructions}>
-                    Press Cmd+R to reload,{'\n'}
-                    Cmd+D or shake for dev menu
-                </Text>
-            </View>
+       <Provider store={store}>
+           <Favorite/>
+       </Provider>
+
+            // <AppWithNavigationState />
+            // <View style={styles.container}>
+            //     <Text style={styles.welcome}>
+            //         Welcome to React Native!
+            //     </Text>
+            //     <Text style={styles.instructions}>
+            //         To get started, edit index.ios.js
+            //     </Text>
+            //     <Text style={styles.instructions}>
+            //         Press Cmd+R to reload,{'\n'}
+            //         Cmd+D or shake for dev menu
+            //     </Text>
+            // </View>
         );
     }
 }
