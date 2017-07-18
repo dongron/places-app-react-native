@@ -29,7 +29,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 import Favorite from './containers/Favorite';
-import FavoriteStackNavigator from './navigators/StackNavigators/FavoriteStackNavigator/FavoriteStackNavigator'
+// import FavoriteStackNavigator from './navigators/StackNavigators/FavoriteStackNavigator/FavoriteStackNavigator'
+
+import StackNavigator from './navigators/StackNavigators';
 
 const store = configureStore();
 
@@ -37,7 +39,7 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <FavoriteStackNavigator/>
+                <StackNavigator/>
             </Provider>
 
             // <AppWithNavigationState />

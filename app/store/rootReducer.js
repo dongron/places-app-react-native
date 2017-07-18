@@ -3,6 +3,7 @@ import {combineReducers} from 'redux';
 // import people from './people';
 // import locations from './locations';
 import { items, itemsHasErrored, itemsIsLoading } from '../containers/Favorite/reducer';
+import {nav, auth} from '../navigators/StackNavigators/reducer';
 // import navigators from '../navigators/TabNavigator/reducer';
 
 // const places = [
@@ -13,7 +14,8 @@ import { items, itemsHasErrored, itemsIsLoading } from '../containers/Favorite/r
 export default combineReducers({
     // people,
     // locations,
-    items, itemsHasErrored, itemsIsLoading
+    items, itemsHasErrored, itemsIsLoading,
+    nav, auth
 });
 
 // export const getPlaces = ({places}) => places;

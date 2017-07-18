@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation'
 
 // Screens
-import Favorite from '../../../containers/Favorite/index';
+import Favorite from '../../../containers/Favorite';
 
 const routeConfiguration = {
 TabOneScreenOne: { screen: Favorite },
