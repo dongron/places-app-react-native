@@ -57,18 +57,15 @@ export default class Favorite extends Component {
     render() {
         return(
             <View>
-                <Text> Testowy tekst
-                </Text>
                 <FlatList
                     data={this.listData}
                     renderItem={
-                        ({item}) => <Text>{item.key}</Text> //like flatlist example
-                        // ({item}) => <TouchableHighlight onPress={() => this.onElementPress(item)}>
-                        //     <View>
-                        //         <Image source={images.place}/>
-                        //         <Text>{{item}}</Text>
-                        //     </View>
-                        // </TouchableHighlight>
+                        ({item}) => <TouchableHighlight onPress={() => this.onElementPress(item)}>
+                            <View>
+                                <Image source={images.place}/>
+                                <Text>{item.name}</Text>
+                            </View>
+                        </TouchableHighlight>
                     }
                     />
             </View>
