@@ -6,13 +6,15 @@ import { AppNavigator } from './';
 // Start with two routes: The Main screen, with the Login screen on top.
 const firstAction = AppNavigator.router.getActionForPathAndParams('Favorite');
 const tempNavState = AppNavigator.router.getStateForAction(firstAction);
+
 // const secondAction = AppNavigator.router.getActionForPathAndParams('Login');
-const initialNavState = AppNavigator.router.getStateForAction(
+const DEFAULT_STATE = AppNavigator.router.getStateForAction(
     // secondAction,
     tempNavState
 );
 
-export function nav(state = initialNavState, action) {
+export function nav(state = DEFAULT_STATE, action) {
+    console.log('---state nav', state);
     let nextState;
     switch (action.type) {
         case 'Login':
