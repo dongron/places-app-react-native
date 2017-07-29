@@ -11,6 +11,7 @@ import {
 
 import images from '../../config/images';
 import colors from '../../config/colors';
+import PlacesList from "../../components/PlacesList";
 
 
 export default class Favorite extends Component {
@@ -56,19 +57,7 @@ export default class Favorite extends Component {
 
     render() {
         return(
-            <View>
-                <FlatList
-                    data={this.listData}
-                    renderItem={
-                        ({item}) => <TouchableHighlight onPress={() => this.onElementPress(item)}>
-                            <View>
-                                <Image source={images.place}/>
-                                <Text>{item.name}</Text>
-                            </View>
-                        </TouchableHighlight>
-                    }
-                    />
-            </View>
+            <PlacesList listData={this.listData} />
         );
     }
 }
