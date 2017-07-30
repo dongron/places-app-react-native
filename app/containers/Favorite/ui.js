@@ -48,7 +48,7 @@ export default class Favorite extends Component {
             "0-c": new Date('2020-01-01'),
         },
         clientsVelocity: {
-            current: 1,
+            current: 900,
             max: 1000,
             maxGroup: 25
         }
