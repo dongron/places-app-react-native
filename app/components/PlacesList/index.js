@@ -33,6 +33,13 @@ export default class PlacesList extends Component {
                             <Icon name="circle" size={30} color="green"></Icon>
                             <Icon name="unlock" size={30} color="red"></Icon>
                             <Icon name="lock" size={30} color="red"/>
+                            <View
+                                style={{
+                                    height: 1,
+                                    width: "100%",
+                                    backgroundColor: "#CED0CE"
+                                }}
+                            />
                         </View>
                     </TouchableHighlight>
                 }
