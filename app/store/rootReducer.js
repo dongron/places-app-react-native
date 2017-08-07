@@ -1,9 +1,7 @@
 import {combineReducers} from 'redux';
-
-// import people from './people';
-// import locations from './locations';
 import { items, itemsHasErrored, itemsIsLoading } from '../containers/Favorite/reducer';
-import {nav, auth} from '../navigators/StackNavigators/reducer';
+import {nav} from '../navigators/StackNavigators/reducer';
+import {auth} from '../config/reducers/auth';
 // import navigators from '../navigators/TabNavigator/reducer';
 
 // const places = [
@@ -14,8 +12,11 @@ import {nav, auth} from '../navigators/StackNavigators/reducer';
 export default combineReducers({
     // people,
     // locations,
-    items, itemsHasErrored, itemsIsLoading,
-    nav, auth
+    items,
+    itemsHasErrored,
+    itemsIsLoading,
+    nav,
+    auth
 });
 
 // export const getPlaces = ({places}) => places;
