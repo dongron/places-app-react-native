@@ -89,6 +89,10 @@ export default class Favorite extends Component {
 
     currentLocation;
 
+    onItemClick(item) {
+        console.log('item in parent clicked', item);
+    }
+
 
     constructor(props) {
         super(props);
@@ -113,7 +117,8 @@ export default class Favorite extends Component {
 
     render() {
         return(
-            <PlacesList listData={this.listData} position={this.currentLocation} />
+            // implement  onItemClick={this.onElementPress(item).bind(this)} here
+            <PlacesList listData={this.listData} position={this.currentLocation} onItemClick={this.onElementPress()} />
         );
     }
 }

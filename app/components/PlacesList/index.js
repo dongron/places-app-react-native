@@ -33,13 +33,17 @@ export default class PlacesList extends Component {
             return 'green';
     }
 
+    onItemPress(item) {
+        // this.props.onItemPress(item);
+    }
+
 
     render() {
         return (
             <FlatList
                 data={this.props.listData}
                 renderItem={
-                    ({item}) => <TouchableHighlight onPress={() => this.onElementPress(item)}>
+                    ({item}) => <TouchableHighlight onPress={() => this.onItemPress(item)}>
                         <View>
                             <Image source={images.place}/>
                             <Text>{item.name}</Text>
