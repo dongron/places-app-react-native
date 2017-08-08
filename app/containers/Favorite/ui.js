@@ -100,6 +100,7 @@ export default class Favorite extends Component {
     }
 
     componentDidMount() {
+        this.getNearbyPlacesFromApi();
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 let initialPosition = JSON.stringify(position);
@@ -108,6 +109,11 @@ export default class Favorite extends Component {
             (error) => alert(error.message),
             {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
         );
+    }
+
+    getNearbyPlacesFromApi() {
+        const {getNearbyPlaces} = this.props;
+        getNearbyPlaces();
     }
 
 
