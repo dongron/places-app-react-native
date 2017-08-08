@@ -5,8 +5,9 @@ import {itemsHasErrored, items, itemsIsLoading} from './reducer';
 import Favorite from './ui';
 import store from '../../store';
 
+// TODO: cloneWithRows
 const mapStateToProps = (state, props) => ({
-    items: state.items,
+    places: state.items,
     hasErrored: state.itemsHasErrored,
     isLoading: state.itemsIsLoading
 });

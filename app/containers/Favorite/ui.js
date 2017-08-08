@@ -20,6 +20,8 @@ export default class Favorite extends Component {
         title: 'Favorites',
     };
 
+    places = this.props.places || [];
+
     listData = [{
         name: "Cafe S",
         street: "Sobieskiego",
@@ -122,9 +124,10 @@ export default class Favorite extends Component {
     }
 
     render() {
+        console.log('places render', this.places);
         return(
             // implement  onItemClick={this.onElementPress(item).bind(this)} here
-            <PlacesList listData={this.listData} position={this.currentLocation} onItemClick={this.onElementPress()} />
+            <PlacesList listData={this.places} position={this.currentLocation} onItemClick={this.onElementPress()} />
         );
     }
 }

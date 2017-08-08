@@ -21,7 +21,7 @@ export default class PlacesApi extends RestClient {
             + '&radius=' + this.radius + '&type=' + this.types.restaurants
             + '&key=' + base.googleApiKey;
         console.log('requsting address', url);
-        return this.GET(url);
+        return this.GET(url).then(response => this.parseResponse(response));
     }
 
 
@@ -29,6 +29,10 @@ export default class PlacesApi extends RestClient {
         let url = '/geocode/json?address=' + searchPlace;
         console.log('requsting address', url);
         return this.GET(url).then(response => this.parseCoordData(response));
+    }
+
+    parseResponse(response) {
+        return response.results;
     }
 
     parseCoordData(response) {

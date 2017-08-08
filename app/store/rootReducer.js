@@ -12,7 +12,7 @@ import {auth} from '../config/reducers/auth';
 export default combineReducers({
     // people,
     // locations,
-    items,
+    places: items,
     itemsHasErrored,
     itemsIsLoading,
     nav,

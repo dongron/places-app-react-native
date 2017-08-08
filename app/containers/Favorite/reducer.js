@@ -35,7 +35,8 @@ export function itemsIsLoading(state = false, action) {
 export function items(state = [], action) {
     switch (action.type) {
         case 'ITEMS_FETCH_DATA_SUCCESS':
-            return action.items;
+            console.log('---payload data',action.payload);
+            return action.payload;
         default:
             return state;
     }
