@@ -32,6 +32,7 @@ export default class PlacesApi extends RestClient {
     }
 
     parseResponse(response) {
+        console.log('response', response, response.results);
         return response.results;
     }
 

@@ -32,7 +32,7 @@ export function itemsIsLoading(state = false, action) {
             return state;
     }
 }
-export function items(state = [], action) {
+export function places(state = [], action) {
     switch (action.type) {
         case 'ITEMS_FETCH_DATA_SUCCESS':
             console.log('---payload data',action.payload);

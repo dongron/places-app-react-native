@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import { items, itemsHasErrored, itemsIsLoading } from '../containers/Favorite/reducer';
+import {places, itemsHasErrored, itemsIsLoading} from '../containers/Favorite/reducer';
 import {nav} from '../navigators/StackNavigators/reducer';
 import {auth} from '../config/reducers/auth';
 // import navigators from '../navigators/TabNavigator/reducer';
@@ -12,7 +12,7 @@ import {auth} from '../config/reducers/auth';
 export default combineReducers({
     // people,
     // locations,
-    places: items,
+    places,
     itemsHasErrored,
     itemsIsLoading,
     nav,
