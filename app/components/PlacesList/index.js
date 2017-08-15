@@ -19,6 +19,7 @@ export default class PlacesList extends Component {
         super(props);
     }
 
+``
     getOpenStatusIcon(item) {
         if (item.opening_hours && item.opening_hours.open_now)
             return 'unlock';
@@ -36,8 +37,12 @@ export default class PlacesList extends Component {
         //     return 'green';
     }
 
-    onItemPress(item) {
-        // this.props.onItemPress(item);
+    // onItemPress(item) {
+    //     this.props.onItemPress(item);
+    // }
+
+    keyExtractor (item, index) {
+        return item.id;
     }
 
 
@@ -45,8 +50,9 @@ export default class PlacesList extends Component {
         return (
             <FlatList
                 data={this.props.listData}
+                keyExtractor={this.keyExtractor}
                 renderItem={
-                    ({item}) => <TouchableHighlight onPress={() => this.onItemPress(item)}>
+                    ({item}) => <TouchableHighlight onPress={() => this.props.onItemPress(item)}>
                         <View>
                             <Image style={style.image}
                                    source={{uri: item.icon}}/>
@@ -56,11 +62,11 @@ export default class PlacesList extends Component {
                             <Text>{item.rating + ' / 5' || ''}</Text>
                             <Icon name="circle"
                                   style={style.circleIcon}
-                                  color={this.getSeatsAvailabilityColor(item)} />
+                                  color={this.getSeatsAvailabilityColor(item)}/>
                             <Icon name={this.getOpenStatusIcon(item)}
-                                  style={style.lockIcon} />
+                                  style={style.lockIcon}/>
                             {/*<Icon name="lock" size={30} color="red"/>*/}
-                            <View style={style.separator} />
+                            <View style={style.separator}/>
                         </View>
                     </TouchableHighlight>
                 }

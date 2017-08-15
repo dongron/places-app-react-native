@@ -123,13 +123,13 @@ export default class Favorite extends Component {
     }
 
 
-    onElementPress(item) {
-        console.log(item);
+    onItemPress(item) {
+        console.warn(item, 'item in parent!');
     }
 
     render() {
         return(
-            <PlacesList listData={this.props.places} position={this.currentLocation} onItemClick={this.onElementPress()} />
+            <PlacesList listData={this.props.places} position={this.currentLocation} onItemPress={this.onItemPress} />
         );
     }
 }
