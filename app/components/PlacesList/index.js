@@ -19,7 +19,7 @@ export default class PlacesList extends Component {
         super(props);
     }
 
-``
+
     getOpenStatusIcon(item) {
         if (item.opening_hours && item.opening_hours.open_now)
             return 'unlock';
