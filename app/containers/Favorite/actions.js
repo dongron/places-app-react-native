@@ -7,38 +7,26 @@ export const getNearbyPlaces = (lat, lng) => {
 
         let placesApi = new PlacesApi(lat, lng);
         placesApi.getNearbyRestaurants()
-            .then((data) => {
-            console.log('DATA from API in actions', data);
-                dispatch(getNerbyPlacesSuccess(data))
-            })
-            .catch((err) => console.log('err:', err))
+            .then(
+                (data) => {
+                    dispatch(getNerbyPlacesSuccess(data))
+                },
+                (err) => console.log('err:', err)
+            )
     }
 };
 
 export const getNerbyPlacesSuccess = (places) => {
     return {
         type: 'ITEMS_FETCH_DATA_SUCCESS',
-        payload: places
+        payload: places,
+        receivedAt: Date.now()
     }
 };
 
-export const pendingOperation = () =>{
-    return{
+export const pendingOperation = () => {
+    return {
         type: 'PENDING_OPERATION'
     }
 };
 
-
-
-// export const logIn = (loginData) => {
-//     return {
-//         type: 'LOG_IN',
-//         payload: loginData
-//     }
-// };
-//
-// export const getData = () => {
-//     return {
-//         type: 'GET_FAVORITES'
-//     }
-// };
