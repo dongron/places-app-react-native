@@ -1,5 +1,5 @@
-import { NavigationActions } from 'react-navigation';
-import { AppNavigator } from './';
+import {NavigationActions} from 'react-navigation';
+import {AppNavigator} from './';
 
 // Start with two routes: The Main screen, with the Login screen on top.
 const firstAction = AppNavigator.router.getActionForPathAndParams('Favorite');
@@ -23,7 +23,7 @@ export function nav(state = DEFAULT_STATE, action) {
             break;
         case 'Logout':
             nextState = AppNavigator.router.getStateForAction(
-                NavigationActions.navigate({ routeName: 'Login' }),
+                NavigationActions.navigate({routeName: 'Login'}),
                 state
             );
             break;
@@ -42,11 +42,11 @@ export function nav(state = DEFAULT_STATE, action) {
     return nextState || state;
 }
 
-
-
-// const AppReducer = combineReducers({
-//     nav,
-//     auth,
-// });
-
-// export default AppReducer;
+export function navParams(state = {}, action) {
+    switch (action.type) {
+        case 'NAV_PARAMETERS_CHANGED':
+            return action.payload;
+        default:
+            return state;
+    }
+}

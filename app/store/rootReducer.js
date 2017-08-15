@@ -1,22 +1,16 @@
 import {combineReducers} from 'redux';
 import {places, itemsHasErrored, itemsIsLoading} from '../containers/Favorite/reducer';
-import {nav} from '../navigators/StackNavigators/reducer';
+import {nav, navParams} from '../navigators/StackNavigators/reducer';
 import {auth} from '../config/reducers/auth';
 // import navigators from '../navigators/TabNavigator/reducer';
 
-// const places = [
-//     {id: 1, name: "cafe skrzynka"},
-//     {id: 2, name:"piwiarnia"}
-// ];
-
 export default combineReducers({
-    // people,
-    // locations,
     places,
     itemsHasErrored,
     itemsIsLoading,
     nav,
-    auth
+    auth,
+    navParams
 });
 
 // export const getPlaces = ({places}) => places;

@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 import Favorite from '../../containers/Favorite';
+import PlaceDetails from '../../containers/PlaceDetails';
 
 export const AppNavigator = StackNavigator({
-    Favorite: { screen: Favorite }
+    Favorite: { screen: Favorite },
+    PlaceDetails: {screen: PlaceDetails}
 });
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
