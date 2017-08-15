@@ -102,7 +102,11 @@ export default class Favorite extends Component {
     }
 
     componentDidMount() {
+        // this.getCurrentPosition();
         this.getNearbyPlacesFromApi();
+    }
+
+    getCurrentPosition() {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 let initialPosition = JSON.stringify(position);
@@ -124,10 +128,8 @@ export default class Favorite extends Component {
     }
 
     render() {
-        console.log('places render', this.places);
         return(
-            // implement  onItemClick={this.onElementPress(item).bind(this)} here
-            <PlacesList listData={this.places} position={this.currentLocation} onItemClick={this.onElementPress()} />
+            <PlacesList listData={this.props.places} position={this.currentLocation} onItemClick={this.onElementPress()} />
         );
     }
 }

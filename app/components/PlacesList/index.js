@@ -20,17 +20,20 @@ export default class PlacesList extends Component {
     }
 
     getOpenStatusIcon(item) {
-        return 'unlock';
+        if (item.opening_hours && item.opening_hours.open_now)
+            return 'unlock';
+        else
+            return 'lock';
     }
 
     getSeatsAvailabilityColor(item) {
-        let proporcion = item.clientsVelocity.current / item.clientsVelocity.max;
-        if (proporcion >= 0.9)
-            return 'red';
-        else if (proporcion > 0.5)
-            return 'yellow';
-        else
-            return 'green';
+        // let proporcion = item.clientsVelocity.current / item.clientsVelocity.max;
+        // if (proporcion >= 0.9)
+        //     return 'red';
+        // else if (proporcion > 0.5)
+        //     return 'yellow';
+        // else
+        //     return 'green';
     }
 
     onItemPress(item) {
@@ -45,20 +48,19 @@ export default class PlacesList extends Component {
                 renderItem={
                     ({item}) => <TouchableHighlight onPress={() => this.onItemPress(item)}>
                         <View>
-                            <Image source={images.place}/>
+                            <Image style={style.image}
+                                   source={{uri: item.icon}}/>
                             <Text>{item.name}</Text>
-                            <Text>Seats: {item.clientsVelocity.current}/{item.clientsVelocity.max}</Text>
-                            <Text>{item.geo.latitude} {item.geo.longitude} {this.props.currentLocation}</Text>
-                            <Icon name="circle" size={30} color={this.getSeatsAvailabilityColor(item)}></Icon>
-                            <Icon name={this.getOpenStatusIcon(this)} size={30}></Icon>
+                            {/*<Text>Seats: {item.clientsVelocity.current}/{item.clientsVelocity.max}</Text>*/}
+                            <Text>Distance: {item.geometry.location.lat} {item.geometry.location.lng} {/*{this.props.currentLocation}*/}</Text>
+                            <Text>{item.rating + ' / 5' || ''}</Text>
+                            <Icon name="circle"
+                                  style={style.circleIcon}
+                                  color={this.getSeatsAvailabilityColor(item)} />
+                            <Icon name={this.getOpenStatusIcon(item)}
+                                  style={style.lockIcon} />
                             {/*<Icon name="lock" size={30} color="red"/>*/}
-                            <View
-                                style={{
-                                    height: 1,
-                                    width: "100%",
-                                    backgroundColor: "#CED0CE"
-                                }}
-                            />
+                            <View style={style.separator} />
                         </View>
                     </TouchableHighlight>
                 }
