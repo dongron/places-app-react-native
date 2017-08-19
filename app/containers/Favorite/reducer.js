@@ -16,7 +16,7 @@ const DEFAULT_STATE = {};
 //     }
 // }
 
-export function itemsHasErrored(state = DEFAULT_STATE, action = {}) {
+export function itemsHasErrored(state = false, action = {}) {
     switch (action.type) {
         case 'ITEMS_HAS_ERRORED':
             return action.hasErrored;
@@ -35,7 +35,6 @@ export function itemsIsLoading(state = false, action) {
 export function places(state = [], action) {
     switch (action.type) {
         case 'ITEMS_FETCH_DATA_SUCCESS':
-            console.log('---payload data',action.payload);
             return action.payload;
         default:
             return state;
