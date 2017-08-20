@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import {places, itemsHasErrored, itemsIsLoading} from '../containers/Favorite/reducer';
 import {nav, navParams} from '../navigators/StackNavigators/reducer';
 import {auth} from '../config/reducers/auth';
+import {currentGeolocation} from "../config/reducers/geolocation";
 // import navigators from '../navigators/TabNavigator/reducer';
 
 export default combineReducers({
@@ -10,7 +11,8 @@ export default combineReducers({
     itemsIsLoading,
     nav,
     auth,
-    navParams
+    navParams,
+    currentGeolocation
 });
 
 // export const getPlaces = ({places}) => places;

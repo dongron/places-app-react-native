@@ -1,8 +1,8 @@
 export function currentGeolocation(state = {}, action = {}) {
     switch (action.type) {
-        case 'ITEMS_FETCH_DATA_SUCCESS':
+        case 'SET_GEOLOCATION_SUCCESS':
             return action.payload;
-        case 'ITEMS_FETCH_DATA_ERROR':
+        case 'SET_GEOLOCATION_ERROR':
             return action.payload;
         default:
             return state;
