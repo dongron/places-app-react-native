@@ -1,31 +1,34 @@
-export const getCurrentGeolocation = () => {
+export const getCurrentGeolocation = (enableHighAccuracyValue = true) => {
     return (dispatch) => {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 let initialPosition = JSON.stringify(position);
-                dispatch(getCurrentGeolocation(initialPosition));
+                dispatch(getCurrentGeolocationSuccess(initialPosition, enableHighAccuracyValue));
             },
             (error) => {
-                dispatch(getCurrentGeolocationError(error));
+                dispatch(getCurrentGeolocationError(error, enableHighAccuracyValue));
             },
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+            // {enableHighAccuracy: enableHighAccuracyValue, timeout: 20000, maximumAge: 1000}
         );
     }
 };
 
-export const getCurrentGeolocationSuccess = (geo) => {
+export const getCurrentGeolocationSuccess = (geo, enableHighAccuracyValue) => {
+    let geoJSON = JSON.parse(geo);
+    geoJSON.highAccuracyMode = enableHighAccuracyValue;
     return {
         type: 'SET_GEOLOCATION_SUCCESS',
-        payload: geo,
+        payload: geoJSON,
         receivedAt: Date.now()
     }
 };
 
-export const getCurrentGeolocationError = (err) => {
-    alert(error.message);
+export const getCurrentGeolocationError = (error, enableHighAccuracyValue) => {
+    alert(error.message, enableHighAccuracyValue);
     return {
         type: 'SET_GEOLOCATION_ERROR',
-        payload: err,
-        receivedAt: Date.now()
+        payload: error,
+        receivedAt: Date.now(),
+        highAccuracy: enableHighAccuracyValue
     }
 };
