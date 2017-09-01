@@ -35,6 +35,16 @@ export default class Favorite extends Component {
                        source={images.restaurant}
                        // source={{uri: item.icon}}
                 />
+                <Text style={styles.openStatus}>Open</Text>
+                <Text style={styles.distance}>30km</Text>
+                {/*list of hours for days of week*/}
+                <Text style={styles.openingHours}></Text>
+                <Text style={styles.address}>ul. Xyz </Text>
+                <Text style={styles.city}>ul. Xyz </Text>
+                <Text style={styles.description}></Text>
+                <View>
+                    {/*view for phone & email*/}
+                </View>
             </View>
         );
     }
