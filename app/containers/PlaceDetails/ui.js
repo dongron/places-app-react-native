@@ -43,7 +43,7 @@ export default class Favorite extends Component {
                 <Text style={styles.city}>ul. Xyz </Text>
                 <Text style={styles.description}></Text>
                 <View>
-                    {/*view for phone & email*/}
+                    {/*view for phone & email & website*/}
                 </View>
             </View>
         );

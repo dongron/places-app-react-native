@@ -15,23 +15,29 @@ export function nav(state = DEFAULT_STATE, action) {
     console.log('---state nav', state);
     let nextState;
     switch (action.type) {
-        case 'Login':
+        case 'LOGIN':
             nextState = AppNavigator.router.getStateForAction(
                 NavigationActions.back(),
                 state
             );
             break;
-        case 'Logout':
+        case 'LOGOUT':
             nextState = AppNavigator.router.getStateForAction(
                 NavigationActions.navigate({routeName: 'Login'}),
                 state
             );
             break;
-        case 'Favorite':
+        case 'ROUTE_FAVORITE':
             break;
-        case 'Places':
+        case 'ROUTE_PLACES':
             break;
-        case 'Reservations':
+        case 'ROUTE_RESERVATIONS':
+            break;
+        case 'ROUTE_DETAILS':
+            nextState = AppNavigator.router.getStateForAction(
+                NavigationActions.navigate({routeName: 'PlaceDetails'}),   //action
+                state
+            );
             break;
         default:
             nextState = AppNavigator.router.getStateForAction(action, state);

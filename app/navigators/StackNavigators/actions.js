@@ -6,3 +6,11 @@ export const searchLocationSuccess = (coordinates) => {
         payload: coordinates
     }
 };
+
+export const routeToDetailsScreen = (place = {}) => {
+    return {
+        type: 'ROUTE_DETAILS',
+        payload: place,
+        receivedAt: Date.now()
+    }
+};
