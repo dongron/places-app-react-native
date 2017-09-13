@@ -30,6 +30,11 @@ export default class PlacesApi extends RestClient {
         return this.GET(url).then(response => this.parseResponse(response));
     }
 
+    getPlaceDetails(placeId = "67ac7ef4e4c289bd9cd1a402f86b27e3c7481bd1") {
+        let url = 'place/details/json?placeid=' + placeId;
+        return this.GET(url).then(response => this.parseResponse(response));
+    }
+
 
     getCoordinates(searchPlace) {
         let url = '/geocode/json?address=' + searchPlace;
