@@ -3,6 +3,7 @@ import base from "./base";
 
 export default class PlacesApi extends RestClient {
 
+    // https://developers.google.com/places/web-service/intro
     radius = '500'; //meters
     types = {
         restaurants: 'restaurant',
@@ -21,6 +22,11 @@ export default class PlacesApi extends RestClient {
             + '&radius=' + this.radius + '&type=' + this.types.restaurants
             + '&key=' + base.googleApiKey;
         console.log('requsting address', url);
+        return this.GET(url).then(response => this.parseResponse(response));
+    }
+
+    getPlacePhoto(photoRef = 'CnRnAAAAL3n0Zu3U6fseyPl8URGKD49aGB2Wka7CKDZfamoGX2ZTLMBYgTUshjr') {
+        let url = 'place/photo?' + photoRef;
         return this.GET(url).then(response => this.parseResponse(response));
     }
 
