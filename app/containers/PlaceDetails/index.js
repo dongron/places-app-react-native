@@ -6,8 +6,8 @@ import PlaceDetails from './ui';
 import store from '../../store';
 
 
-// TODO: cloneWithRows
 const mapStateToProps = (state, props) => ({
+    place: state.navParams
 });
 
 const mapDispatchToProps = {

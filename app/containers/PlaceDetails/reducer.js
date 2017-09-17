@@ -1,17 +1,12 @@
 const DEFAULT_STATE = {};
 
-// login.reducer.js can export the auth_state，after combine with the single state.
-export default (state = DEFAULT_STATE, {type, payload} = {}) => {
+export const placeDetailsData = (state = DEFAULT_STATE, {type, payload} = {}) => {
     switch (type) {
-        case 'LOG_IN':
-            return {...state, lastModified: Date.now()};
-        case 'LOG_OUT':
-            return {...state, lastModified: Date.now()};
-        // case 'SEARCH_LOCATION':
-        //     return {searchedLocation: payload};
-        // case 'DISMISS_LOCATION_CHANGES':
-        //     return {searchedLocation: {}};
+        case 'PLACE_DETAILS_PHOTO':
+            return {...state, photo: payload, lastModified: Date.now()};
+        case 'PLACE_DETAILS_DATA':
+            return {...state, data: payload, lastModified: Date.now()};
         default:
             return state;
     }
-}
+};
