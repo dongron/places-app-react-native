@@ -5,8 +5,8 @@ export const getNearbyPlaces = (lat, lng) => {
     return (dispatch) => {
         dispatch(pendingOperation());
 
-        let placesApi = new PlacesApi(lat, lng);
-        placesApi.getNearbyRestaurants()
+        let placesApi = new PlacesApi();
+        placesApi.getNearbyRestaurants(lat, lng)
             .then(
                 (data) => {
                     dispatch(getNerbyPlacesSuccess(data))
