@@ -5,7 +5,7 @@ export const getPlacePhoto = (placeId) => {
     return (dispatch) => {
         dispatch(pendingOperation());
         // download all available photos / max first 5
-        let photoReference = placeId.photos[0].photo_reference;
+        let photoReference = (placeId.photos && placeId.photos.length > 0) ? placeId.photos[0].photo_reference : null;
 
         let placesApi = new PlacesApi();
         placesApi.getPlacePhoto(photoReference).then(
@@ -13,7 +13,7 @@ export const getPlacePhoto = (placeId) => {
                 dispatch(getPlacePhotoSuccess(data));
             },
             (err) => {
-                console.warn('photo fetch error', err);
+                console.log('photo fetch error', err);
             });
     }
 };
@@ -31,7 +31,7 @@ export const getPlaceDetails = (placeId) => {
                 dispatch(getPlacePhotoSuccess(data));
             },
             (err) => {
-                console.warn('photo fetch error', err);
+                console.log('details fetch error', err);
             });
 
         // placesApi.getPlaceDetails(placeId)
