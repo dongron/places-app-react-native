@@ -1,16 +1,41 @@
 import store from '../../store';
 import PlacesApi from '../../store/api/placesApi';
 
+export const getPlacePhoto = (placeId) => {
+    return (dispatch) => {
+        dispatch(pendingOperation());
+        // download all available photos / max first 5
+        let photoReference = placeId.photos[0].photo_reference;
+
+        let placesApi = new PlacesApi();
+        placesApi.getPlacePhoto(photoReference).then(
+            (data) => {
+                dispatch(getPlacePhotoSuccess(data));
+            },
+            (err) => {
+                console.warn('photo fetch error', err);
+            });
+    }
+};
+
 export const getPlaceDetails = (placeId) => {
     return (dispatch) => {
         dispatch(pendingOperation());
 
-        let placesApi = new PlacesApi();
-        placesApi.getPlacePhoto(placeId).then((data) => {
-            dispatch(getPlaceDetailsSuccess(data));
-        });
+        // download all available photos / max first 5
+        let photoReference = placeId.photos[0].photo_reference;
 
-        // placesApi.getPlaceDetails(placeId).then(
+        let placesApi = new PlacesApi();
+        placesApi.getPlacePhoto(photoReference).then(
+            (data) => {
+                dispatch(getPlacePhotoSuccess(data));
+            },
+            (err) => {
+                console.warn('photo fetch error', err);
+            });
+
+        // placesApi.getPlaceDetails(placeId)
+        //     .then(
         //         (data) => {
         //             dispatch(getPlaceDetailsSuccess(data))
         //         },

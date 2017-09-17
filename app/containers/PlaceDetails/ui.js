@@ -26,14 +26,24 @@ export default class Favorite extends Component {
         super(props);
     }
 
+    componentWillMount() {
+        this.getPlacePhoto();
+    }
+
+    getPlacePhoto() {
+        const {getPlacePhoto} = this.props;
+        let {place} = this.props;
+        getPlacePhoto(place);
+    }
 
     render() {
+        let {placeDetailsData, placePhoto} = this.props;
+        image = placePhoto? {uri: placePhoto} : images.restaurant;
         return (
             <View>
                 <Image style={styles.mainImage}
                        resizeMode={'cover'}
-                       source={images.restaurant}
-                       // source={{uri: item.icon}}
+                       source={image}
                 />
                 <Text style={styles.openStatus}>Open</Text>
                 <Text style={styles.distance}>30km</Text>

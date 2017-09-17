@@ -5,6 +5,7 @@ export default class PlacesApi extends RestClient {
 
     // https://developers.google.com/places/web-service/intro
     radius = '500'; //meters
+    maxwidth = '300';
     types = {
         restaurants: 'restaurant',
         bars: 'bar',
@@ -26,12 +27,18 @@ export default class PlacesApi extends RestClient {
     }
 
     getPlacePhoto(photoRef = 'CnRnAAAAL3n0Zu3U6fseyPl8URGKD49aGB2Wka7CKDZfamoGX2ZTLMBYgTUshjr') {
-        let url = 'place/photo?' + photoRef;
-        return this.GET(url).then(response => this.parseResponse(response));
+        let url = base.googlePlacesUrl + '/place/photo?photoreference=' + photoRef
+            + '&key=' + base.googleApiKey + '&maxwidth=' + this.maxwidth;
+        let testRef = 'https://maps.googleapis.com/maps/api/place/photo'
+            + '?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyBHZ8fmIFZwSrV8XevHQzJIsLWdPwfBuA4'
+
+        console.log(url);
+        console.log(testRef);
+        return fetch(url).then(response => {console.warn('RESP', response); return response.url});
     }
 
     getPlaceDetails(placeId = "67ac7ef4e4c289bd9cd1a402f86b27e3c7481bd1") {
-        let url = 'place/details/json?placeid=' + placeId;
+        let url = '/place/details/json?placeid=' + placeId;
         return this.GET(url).then(response => this.parseResponse(response));
     }
 

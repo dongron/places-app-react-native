@@ -7,7 +7,9 @@ import store from '../../store';
 
 
 const mapStateToProps = (state, props) => ({
-    place: state.navParams
+    place: state.navParams,
+    placeDetails: state.placeDetailsData,
+    placePhoto: state.placeDetailsData.photo
 });
 
 const mapDispatchToProps = {
