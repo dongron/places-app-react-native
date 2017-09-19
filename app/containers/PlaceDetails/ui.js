@@ -28,12 +28,19 @@ export default class Favorite extends Component {
 
     componentWillMount() {
         this.getPlacePhoto();
+        this.getPlaceDetils();
     }
 
     getPlacePhoto() {
         const {getPlacePhoto} = this.props;
         let {place} = this.props;
         getPlacePhoto(place);
+    }
+
+    getPlaceDetils() {
+        const {getPlaceDetails} = this.props;
+        let {place} = this.props;
+        getPlaceDetails(place.place_id);
     }
 
     render() {
@@ -49,8 +56,7 @@ export default class Favorite extends Component {
                 <Text style={styles.distance}>30km</Text>
                 {/*list of hours for days of week*/}
                 <Text style={styles.openingHours}></Text>
-                <Text style={styles.address}>ul. Xyz </Text>
-                <Text style={styles.city}>ul. Xyz </Text>
+                <Text style={styles.address}>{this.props.place.vicinity}</Text>
                 <Text style={styles.description}></Text>
                 <View>
                     {/*view for phone & email & website*/}

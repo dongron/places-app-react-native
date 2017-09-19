@@ -12,7 +12,6 @@ const DEFAULT_STATE = AppNavigator.router.getStateForAction(
 );
 
 export function nav(state = DEFAULT_STATE, action) {
-    console.log('---state nav', state);
     let nextState;
     switch (action.type) {
         case 'LOGIN':

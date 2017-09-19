@@ -1,11 +1,11 @@
 import store from '../../store';
 import PlacesApi from '../../store/api/placesApi';
 
-export const getPlacePhoto = (placeId) => {
+export const getPlacePhoto = (place) => {
     return (dispatch) => {
         dispatch(pendingOperation());
         // download all available photos / max first 5
-        let photoReference = (placeId.photos && placeId.photos.length > 0) ? placeId.photos[0].photo_reference : null;
+        let photoReference = (place.photos && place.photos.length > 0) ? place.photos[0].photo_reference : null;
 
         let placesApi = new PlacesApi();
         placesApi.getPlacePhoto(photoReference).then(
@@ -20,27 +20,14 @@ export const getPlacePhoto = (placeId) => {
 
 export const getPlaceDetails = (placeId) => {
     return (dispatch) => {
-        dispatch(pendingOperation());
-
-        // download all available photos / max first 5
-        let photoReference = placeId.photos[0].photo_reference;
-
         let placesApi = new PlacesApi();
-        placesApi.getPlacePhoto(photoReference).then(
+        placesApi.getPlaceDetails(placeId).then(
             (data) => {
-                dispatch(getPlacePhotoSuccess(data));
+                dispatch(getPlaceDetailsSuccess(data));
             },
             (err) => {
                 console.log('details fetch error', err);
             });
-
-        // placesApi.getPlaceDetails(placeId)
-        //     .then(
-        //         (data) => {
-        //             dispatch(getPlaceDetailsSuccess(data))
-        //         },
-        //         (err) => console.log('err:', err)
-        //     );
     }
 };
 
