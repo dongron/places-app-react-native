@@ -23,23 +23,20 @@ export default class PlacesApi extends RestClient {
             + '&radius=' + this.radius + '&type=' + this.types.restaurants
             + '&key=' + base.googleApiKey;
         console.log('requsting address', url);
-        return this.GET(url).then(response => this.parseResponse(response));
+        return this.GET(url).then(response => this.parseResponseArray(response));
     }
 
     getPlacePhoto(photoRef = 'CnRnAAAAL3n0Zu3U6fseyPl8URGKD49aGB2Wka7CKDZfamoGX2ZTLMBYgTUshjr') {
         let url = base.googlePlacesUrl + '/place/photo?photoreference=' + photoRef
             + '&key=' + base.googleApiKey + '&maxwidth=' + this.maxwidth;
-        let testRef = 'https://maps.googleapis.com/maps/api/place/photo'
-            + '?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyBHZ8fmIFZwSrV8XevHQzJIsLWdPwfBuA4'
-
-        console.log(url);
-        console.log(testRef);
-        return fetch(url).then(response => {console.warn('RESP', response); return response.url});
+        return fetch(url).then(response => response.url);
     }
 
     getPlaceDetails(placeId = "67ac7ef4e4c289bd9cd1a402f86b27e3c7481bd1") {
-        let url = '/place/details/json?placeid=' + placeId;
-        return this.GET(url).then(response => this.parseResponse(response));
+        let url = '/place/details/json?placeid=' + placeId
+            + '&key=' + base.googleApiKey;
+        console.log('url', url);
+        return this.GET(url).then(response => this.parseResponseObject(response));
     }
 
 
@@ -49,9 +46,14 @@ export default class PlacesApi extends RestClient {
         return this.GET(url).then(response => this.parseCoordData(response));
     }
 
-    parseResponse(response) {
+    parseResponseArray(response) {
         console.log('response', response, response.results);
         return response.results;
+    }
+
+    parseResponseObject(response) {
+        console.log('response', response, response.results);
+        return response.result;
     }
 
     parseCoordData(response) {
