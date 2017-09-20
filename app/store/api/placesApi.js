@@ -22,7 +22,6 @@ export default class PlacesApi extends RestClient {
         let url = '/place/nearbysearch/json?location=' + lat + ',' + lng
             + '&radius=' + this.radius + '&type=' + this.types.restaurants
             + '&key=' + base.googleApiKey;
-        console.log('requsting address', url);
         return this.GET(url).then(response => this.parseResponseArray(response));
     }
 
@@ -35,29 +34,24 @@ export default class PlacesApi extends RestClient {
     getPlaceDetails(placeId = "67ac7ef4e4c289bd9cd1a402f86b27e3c7481bd1") {
         let url = '/place/details/json?placeid=' + placeId
             + '&key=' + base.googleApiKey;
-        console.log('url', url);
         return this.GET(url).then(response => this.parseResponseObject(response));
     }
 
 
     getCoordinates(searchPlace) {
         let url = '/geocode/json?address=' + searchPlace;
-        console.log('requsting address', url);
         return this.GET(url).then(response => this.parseCoordData(response));
     }
 
     parseResponseArray(response) {
-        console.log('response', response, response.results);
         return response.results;
     }
 
     parseResponseObject(response) {
-        console.log('response', response, response.results);
         return response.result;
     }
 
     parseCoordData(response) {
-        console.log('==response status', response.status);
         if (response.status !== "OK") {
             return 0;
         }
