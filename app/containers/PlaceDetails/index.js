@@ -9,6 +9,7 @@ import store from '../../store';
 const mapStateToProps = (state, props) => ({
     place: state.navParams,
     placeDetails: state.placeDetailsData,
+    placeDetailsData: state.placeDetailsData.data,
     placePhoto: state.placeDetailsData.photo
 });
 

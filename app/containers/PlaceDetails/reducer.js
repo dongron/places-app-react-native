@@ -1,4 +1,7 @@
-const DEFAULT_STATE = {};
+const DEFAULT_STATE = {
+    photo: null,
+    data: null
+};
 
 export const placeDetailsData = (state = DEFAULT_STATE, {type, payload} = {}) => {
     switch (type) {

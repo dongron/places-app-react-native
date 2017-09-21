@@ -46,9 +46,15 @@ export default class Favorite extends Component {
     render() {
         let {placeDetailsData, placePhoto} = this.props;
         image = placePhoto ? {uri: placePhoto} : images.restaurant;
-        let openStatus = placeDetailsData && placeDetailsData.data && placeDetailsData.data.opening_hours.open_now ? 'Open' : 'Close';
-        let address = placeDetailsData && placeDetailsData.data.formatted_address;
-
+        let openStatus = null;
+        if(placeDetailsData && placeDetailsData.opening_hours && placeDetailsData.opening_hours.open_now)
+            openStatus = 'Open';
+        else if(placeDetailsData && placeDetailsData.opening_hours && !placeDetailsData.opening_hours.open_now)
+            openStatus = 'Close';
+        let address = placeDetailsData && placeDetailsData.formatted_address;
+        let phoneNumber = placeDetailsData && placeDetailsData.international_phone_number;
+        let website = placeDetailsData && placeDetailsData.website;
+        // console.warn(placePhoto, placeDetailsData);
         return (
             <View>
                 <Image style={styles.mainImage}
@@ -63,8 +69,8 @@ export default class Favorite extends Component {
                 <Text style={styles.address}>{address}</Text>
                 <Text style={styles.description}></Text>
                 <View>
-                    <Text>{this.props.placeDetailsData && this.props.placeDetailsData.data.international_phone_number}</Text>
-                    <Text>{this.props.placeDetailsData && this.props.placeDetailsData.data.website}</Text>
+                    <Text>{phoneNumber}</Text>
+                    <Text>{website}</Text>
                     {/*view for phone & email & website*/}
                 </View>
             </View>
