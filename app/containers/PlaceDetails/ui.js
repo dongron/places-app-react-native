@@ -5,7 +5,8 @@ import {
     TextInput,
     FlatList,
     TouchableHighlight,
-    Image
+    Image,
+    Button
 } from 'react-native';
 
 import images from '../../config/images';
@@ -43,17 +44,25 @@ export default class Favorite extends Component {
         getPlaceDetails(place.place_id);
     }
 
+    renderWebsite(website) {
+        if (website)
+            return <Button
+                title={website}/>
+        else
+            return;
+    }
+
     render() {
         let {placeDetailsData, placePhoto} = this.props;
         image = placePhoto ? {uri: placePhoto} : images.restaurant;
         let openStatus = null;
-        if(placeDetailsData && placeDetailsData.opening_hours && placeDetailsData.opening_hours.open_now)
+        if (placeDetailsData && placeDetailsData.opening_hours && placeDetailsData.opening_hours.open_now)
             openStatus = 'Open';
-        else if(placeDetailsData && placeDetailsData.opening_hours && !placeDetailsData.opening_hours.open_now)
+        else if (placeDetailsData && placeDetailsData.opening_hours && !placeDetailsData.opening_hours.open_now)
             openStatus = 'Close';
         let address = placeDetailsData && placeDetailsData.formatted_address;
-        let phoneNumber = placeDetailsData && placeDetailsData.international_phone_number;
-        let website = placeDetailsData && placeDetailsData.website;
+        let phoneNumber = (placeDetailsData && placeDetailsData.international_phone_number) || '';
+        let website = (placeDetailsData && placeDetailsData.website) || '';
         // console.warn(placePhoto, placeDetailsData);
         return (
             <View>
@@ -69,8 +78,9 @@ export default class Favorite extends Component {
                 <Text style={styles.address}>{address}</Text>
                 <Text style={styles.description}></Text>
                 <View>
-                    <Text>{phoneNumber}</Text>
-                    <Text>{website}</Text>
+                    <Button
+                        title={'Call ' + phoneNumber}/>
+                    {this.renderWebsite(website)}
                     {/*view for phone & email & website*/}
                 </View>
             </View>
