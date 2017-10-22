@@ -58,17 +58,15 @@ export default class PlacesList extends Component {
                                 <View>
                                     <Image style={style.image}
                                            source={{uri: item.icon}}/>
-                                    <View style={style.statusIconsContainer}>
-                                        <Icon name="circle"
-                                              style={style.circleIcon}
-                                              color={this.getSeatsAvailabilityColor(item)}/>
-                                        <Icon name={this.getOpenStatusIcon(item)}
-                                              style={style.lockIcon}/>
-                                        {/*<Icon name="lock" size={30} color="red"/>*/}
-                                    </View>
                                 </View>
                                 <View style={style.textContainer}>
-                                    <Text style={style.placeName}>{item.name}</Text>
+                                    <View style={style.headerContainer}>
+                                        <Text style={style.placeName}>{item.name}</Text>
+                                        <View style={style.iconsContainer}>
+                                        <Icon name={this.getOpenStatusIcon(item)}
+                                              style={style.lockIcon}/>
+                                        </View>
+                                    </View>
                                     {/*<Text>Seats: {item.clientsVelocity.current}/{item.clientsVelocity.max}</Text>*/}
                                     <View style={style.inlineDataContainer}>
                                         <Text>Distance: </Text>

@@ -15,29 +15,37 @@ const styles = StyleSheet.create({
         margin: 5
     },
     textContainer: {
-        marginLeft: 10
+        flex: 1,
+        marginLeft: 10,
     },
     placeName: {
+        flex: 1,
         fontSize: 18,
         fontWeight: 'bold',
-        textAlign: 'center',
-        marginBottom: 10
+        textAlign: 'center'
     },
     importantValue: {
         fontWeight: 'bold'
     },
-    statusIconsContainer: {
+    headerContainer: {
         flexDirection: 'row',
+        flex: 1
     },
     circleIcon: {
         fontSize: 20,
-        margin: 5
+        marginLeft: 5,
+        marginRight: 5
+    },
+    iconsContainer: {
+        justifyContent:'flex-end'
     },
     lockIcon: {
         fontSize: 20,
-        margin: 5
+        margin: 5,
+        justifyContent: 'flex-end'
     },
     separator: {
+        marginTop: 10,
         height: 1,
         width: "100%",
         backgroundColor: "#CED0CE"
