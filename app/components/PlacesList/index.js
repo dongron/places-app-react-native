@@ -41,10 +41,25 @@ export default class PlacesList extends Component {
     //     this.props.onItemPress(item);
     // }
 
-    keyExtractor (item, index) {
+    keyExtractor(item, index) {
         return item.id;
     }
 
+    getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
+        const R = 6371; // Radius of the earth in km
+        let dLat = this.deg2rad(lat2 - lat1);  // this.deg2rad below
+        let dLon = this.deg2rad(lng2 - lng1);
+        let a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c; // Distance in km
+    }
+
+    deg2rad(deg) {
+        return deg * (Math.PI / 180)
+    }
 
     render() {
         return (
@@ -63,8 +78,8 @@ export default class PlacesList extends Component {
                                     <View style={style.headerContainer}>
                                         <Text style={style.placeName}>{item.name}</Text>
                                         <View style={style.iconsContainer}>
-                                        <Icon name={this.getOpenStatusIcon(item)}
-                                              style={style.lockIcon}/>
+                                            <Icon name={this.getOpenStatusIcon(item)}
+                                                  style={style.lockIcon}/>
                                         </View>
                                     </View>
                                     {/*<Text>Seats: {item.clientsVelocity.current}/{item.clientsVelocity.max}</Text>*/}
